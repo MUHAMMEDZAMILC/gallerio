@@ -47,6 +47,7 @@ class ProviderController extends ChangeNotifier {
   }
 
   gethomepagedata(context,int page) async {
+    ispageloading = true;
     await getcollection(context);
     if (collectionlist.isNotEmpty) {
       selectedcollection = collectionlist[0];

@@ -1,6 +1,9 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gallerio/utils/theme/dimensions.dart';
+import 'package:gallerio/view/components/apptext.dart';
 
 import '../theme/colors.dart';
 import '../theme/theme_data.dart';
@@ -77,7 +80,51 @@ class PageEntryLoader extends StatelessWidget {
       height: ScreenUtil.screenHeight,
       color: ColorResources.WHITE,
       child: const Center(
-        child: CircularProgressIndicator(color: secondarycolor,),
+        child: CircularProgressIndicator(color: primarycolor,),
+      ),
+    );
+  }
+}
+// ignore: must_be_immutable
+class PageReloadLoader extends StatelessWidget {
+   PageReloadLoader({super.key,required this.onrefresh});
+  Function()? onrefresh;
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      body: Container(
+        width: ScreenUtil.screenWidth,
+        height: ScreenUtil.screenHeight,
+        color: ColorResources.WHITE,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(CupertinoIcons.wifi_slash,size: 20,),
+                gapHorizontal,
+                AppText(text: 'Network is Down',weight: FontWeight.w600,size: 16,),
+              ],
+            ),
+            gapLarge,
+            SizedBox(
+              width: ScreenUtil.screenWidth!*0.5,
+              child: ElevatedButton(onPressed: onrefresh,style:  ButtonStyle(
+                        elevation: const WidgetStatePropertyAll(8),
+                          padding:
+                              const WidgetStatePropertyAll(EdgeInsets.zero),
+                          backgroundColor: const WidgetStatePropertyAll(
+                             primarycolor),
+                          shadowColor: const WidgetStatePropertyAll(
+                              ColorResources.BORDER_SHADE),
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          ))), child: AppText(text: 'Refresh',color: ColorResources.WHITE,)),
+            )
+          ],
+        ),
       ),
     );
   }

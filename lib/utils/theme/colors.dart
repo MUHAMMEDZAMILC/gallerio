@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import 'dimensions.dart';
-import 'theme_data.dart';
 
 
 
@@ -58,102 +57,7 @@ class ColorResources {
   static const Color ICON_GREY = Color(0xFF9ca4a7);
   static const Color SKYBLUECON = Color(0xFF80b6ca);
 
-  static Color hexToColor(String code) {
-    return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
-  }
-
-  static Color fromHex(String hexString) {
-    final buffer = StringBuffer();
-    if (hexString.isEmpty) {
-      return const Color(0xFF252525);
-    } else {
-      if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
-      buffer.write(hexString.replaceFirst('#', ''));
-      return Color(int.parse(buffer.toString(), radix: 16));
-    }
-  }
-
-  static BoxShadow optionsShadow = const BoxShadow(
-    // blurRadius: 10,
-    color: Color.fromRGBO(0, 0, 0, 0.1),
-    offset: Offset(0, 4),
-    spreadRadius: 10,
-  );
-
-  static LinearGradient npGradient = const LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      Color(0xFF652D92),
-      Color(0xFF2E3192),
-      Color(0xFF2353A8),
-      Color(0xFF0D95D5),
-    ],
-    stops: [0, 0.31, 0.67, 0.93],
-  );
-
-  static LinearGradient vediothumbnailGradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      Colors.black.withOpacity(0),
-      Colors.black.withOpacity(30.38),
-      Colors.black.withOpacity(100),
-    ],
-    stops: const [0.31, 0.67, 0.93],
-  );
-
-  static LinearGradient brandGradient = const LinearGradient(
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-    colors: [
-      Color(0xfff49b1a),
-      Color(0xffff7b39),
-      Color(0xffff4e52),
-      Color(0xfff80080),
-      Color(0xffac018b),
-      Color(0xff810090),
-    ],
-    // stops: [0, 0.31, 0.67, 0.93],
-  );
-  static LinearGradient splashgradient = const LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [Color(0xffff1b6f), Color(0xffff5c4a), Color(0xff141e3c)],
-    // stops: [0, 0.31, 0.67, 0.93],
-  );
-
-  // colors: [Color(0xffff1b6f), Color(0xffff5c4a), Color(0xff141e3c)],
-  static LinearGradient mainGradient = const LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-     primarycolor,secondarycolor
-      // Color(0x00141e3c),
-    ],
-    // stops: [10, 12, 5, 8],
-  );
-
-// LinearGradient(
-//               colors: [Colors.blue, Colors.purple],
-//               begin: Alignment.topCenter,
-//               end: Alignment.bottomCenter,
-//             ),
-  static final ThemeData datePickerTheme = ThemeData(
-    colorScheme: const ColorScheme.light(
-      primary: PRIMARY,
-      brightness: Brightness.light,
-      onPrimary: WHITE,
-      surface: WHITE,
-      onSurface: BLACK,
-      secondary: PRIMARY,
-    ),
-    buttonTheme: const ButtonThemeData(
-      textTheme: ButtonTextTheme.primary,
-    ),
-    textTheme: TextTheme(
-    ),
-  );
+  
 
   static List<BoxShadow> defshadow =  [
                                     BoxShadow(
