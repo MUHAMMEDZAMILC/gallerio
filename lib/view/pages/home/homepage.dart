@@ -151,6 +151,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                         controller: scrollcontroller,
                                         children: [
                                           gap,
+                                          Container(
+                                            width: ScreenUtil.screenWidth,
+                                            height: ScreenUtil.screenHeight!*0.2,
+                                            decoration: BoxDecoration(
+                                              color: ColorResources.WHITE,
+                                              image: DecorationImage(image: NetworkImage(liveservice.photolist.first.urls
+                                                                      ?.thumb ??
+                                                                  ''),fit: BoxFit.cover)
+                                            ),
+                                          ),
                                           MasonryGridView.builder(
                                             physics:
                                                 const NeverScrollableScrollPhysics(),
@@ -164,79 +174,82 @@ class _HomeScreenState extends State<HomeScreen> {
                                             itemBuilder: (context, index) {
                                               Photos data =
                                                   liveservice.photolist[index];
-                                              return Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      padding),
-                                                  child: Column(
-                                                    children: [
-                                                      ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      padding),
-                                                          child: Image.network(
-                                                              data.urls
-                                                                      ?.thumb ??
-                                                                  '')),
-                                                      Row(
-                                                        children: [
-                                                          Expanded(
-                                                              child: AppText(
-                                                            text:
-                                                                data.altDescription ??
-                                                                    '',
-                                                            weight:
-                                                                FontWeight.w500,
-                                                            size: 10,
-                                                            maxline: 2,
-                                                          )),
-                                                          PopupMenuButton(
-                                                              itemBuilder:
-                                                                  (context) => [
-                                                                        PopupMenuItem(
-                                                                          onTap:
-                                                                              () {
-                                                                            downloadImage(context,data.urls?.raw ?? '',
-                                                                                data.id ?? 'image$index');
-                                                                          },
-                                                                          padding: const EdgeInsets
-                                                                              .all(
-                                                                              paddingSmall),
-                                                                          height:
-                                                                              10,
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceAround,
-                                                                            children: [
-                                                                              const Icon(
-                                                                                Icons.download_rounded,
-                                                                                size: 16,
-                                                                                color: ColorResources.BLACK,
-                                                                              ),
-                                                                              gapHorizontalSmall,
-                                                                              AppText(
-                                                                                text: 'Download',
-                                                                                size: 12,
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        )
-                                                                      ],
-                                                              icon: const Icon(
-                                                                Icons
-                                                                    .more_horiz,
-                                                                size: 16,
-                                                                color: ColorResources
-                                                                    .ICON_GREY,
-                                                              ),
-                                                              color:
-                                                                  ColorResources
-                                                                      .WHITE)
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ));
+                                              return Visibility(
+                                                visible: liveservice.photolist.first.id == data.id?false:true,
+                                                child: Padding(
+                                                    padding: const EdgeInsets.all(
+                                                        padding),
+                                                    child: Column(
+                                                      children: [
+                                                        ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        padding),
+                                                            child: Image.network(
+                                                                data.urls
+                                                                        ?.thumb ??
+                                                                    '')),
+                                                        Row(
+                                                          children: [
+                                                            Expanded(
+                                                                child: AppText(
+                                                              text:
+                                                                  data.altDescription ??
+                                                                      '',
+                                                              weight:
+                                                                  FontWeight.w500,
+                                                              size: 10,
+                                                              maxline: 2,
+                                                            )),
+                                                            PopupMenuButton(
+                                                                itemBuilder:
+                                                                    (context) => [
+                                                                          PopupMenuItem(
+                                                                            onTap:
+                                                                                () {
+                                                                              downloadImage(context,data.urls?.raw ?? '',
+                                                                                  data.id ?? 'image$index');
+                                                                            },
+                                                                            padding: const EdgeInsets
+                                                                                .all(
+                                                                                paddingSmall),
+                                                                            height:
+                                                                                10,
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisAlignment:
+                                                                                  MainAxisAlignment.spaceAround,
+                                                                              children: [
+                                                                                const Icon(
+                                                                                  Icons.download_rounded,
+                                                                                  size: 16,
+                                                                                  color: ColorResources.BLACK,
+                                                                                ),
+                                                                                gapHorizontalSmall,
+                                                                                AppText(
+                                                                                  text: 'Download',
+                                                                                  size: 12,
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          )
+                                                                        ],
+                                                                icon: const Icon(
+                                                                  Icons
+                                                                      .more_horiz,
+                                                                  size: 16,
+                                                                  color: ColorResources
+                                                                      .ICON_GREY,
+                                                                ),
+                                                                color:
+                                                                    ColorResources
+                                                                        .WHITE)
+                                                          ],
+                                                        )
+                                                      ],
+                                                    )),
+                                              );
                                             },
                                           ),
                                           (liveservice.isbottomloading)

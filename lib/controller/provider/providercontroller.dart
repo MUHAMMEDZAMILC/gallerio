@@ -33,6 +33,7 @@ class ProviderController extends ChangeNotifier {
      List<Photos> scrollphotos = await ntop.getphotos(context,page);
       photolist.addAll(scrollphotos);
     }
+    photolist = photolist.reversed.toList();
     isbottomloading = false;
     notifyListeners();
   }
