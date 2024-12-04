@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gallerio/utils/helper/help_screensize.dart';
+import 'package:gallerio/utils/helper/pagenavigator.dart';
 import 'package:gallerio/utils/theme/colors.dart';
 import 'package:gallerio/view/components/apptext.dart';
+import 'package:gallerio/view/pages/home/homepage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,8 +17,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 2), () {
-      
+    Timer(const Duration(seconds: 2), () {
+      Screen.openAsNewPage(context, const HomeScreen());
     },);
     super.initState();
   }
