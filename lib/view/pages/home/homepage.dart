@@ -150,15 +150,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                     : ListView(
                                         controller: scrollcontroller,
                                         children: [
-                                          gap,
-                                          Container(
-                                            width: ScreenUtil.screenWidth,
-                                            height: ScreenUtil.screenHeight!*0.2,
-                                            decoration: BoxDecoration(
-                                              color: ColorResources.WHITE,
-                                              image: DecorationImage(image: NetworkImage(liveservice.photolist.first.urls
-                                                                      ?.thumb ??
-                                                                  ''),fit: BoxFit.cover)
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: padding),
+                                            child: Container(
+                                              width: ScreenUtil.screenWidth,
+                                              height: ScreenUtil.screenHeight!*0.25,
+                                              decoration: BoxDecoration(
+                                                color: ColorResources.WHITE,
+                                                borderRadius: BorderRadius.circular(padding),
+                                                image: DecorationImage(image: NetworkImage(liveservice.photolist.first.urls
+                                                                        ?.thumb ??
+                                                                    ''),fit: BoxFit.cover)
+                                              ),
                                             ),
                                           ),
                                           MasonryGridView.builder(
@@ -248,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ],
                                                         )
                                                       ],
-                                                    )),
+                                                    ))
                                               );
                                             },
                                           ),
